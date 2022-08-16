@@ -14,18 +14,26 @@ const Index = props => {
     console.log("id", id)
     props.editTodos(todoParam, id)
   }
+  const _completeTodoHandler = (id) => {
+    props.completeTodo(id)
+  }
 
   return (
     <div>
       {props.todos.map(todo => {
         return (
-          <TodoCard
-            key={todo.id}
-            name={todo.name}
-            desc={todo.desc}
-            deleteHandler={() => _deleteTodoHandler(todo.id)}
-            editHandler={() => _editTodoHandler(todo, todo.id)}
-          />
+          <div className='todo-row' key={todo.id}>
+            <TodoCard
+              
+              name={todo.name}
+              desc={todo.desc}
+              isComplete={todo.isComplete}
+              deleteHandler={() => _deleteTodoHandler(todo.id)}
+              editHandler={() => _editTodoHandler(todo, todo.id)}
+              completeTodoHandler={() => _completeTodoHandler(todo.id)}
+            />
+          </div>
+          
         );
       })}
     </div>

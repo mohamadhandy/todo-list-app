@@ -17,26 +17,30 @@ const Index = ({addHandler, todo, setTodo}) => {
   };
 
   return (
-    <form className='form-container' onSubmit={e => handleSubmit(e)}>
+    <form className='todo-form' onSubmit={e => handleSubmit(e)}>
       <div className='form-field'>
-        <label>Name</label>
+        {/* <label>Name</label> */}
         <input
           type='text'
           name='name'
-          placeholder='What your plan?'
+          className='todo-input'
+          placeholder='Name your plan?'
           onChange={e => setTodo({ ...todo, name: e.target.value })}
         />
       </div>
+      <br></br>
       <div className='form-field'>
-        <label>Description</label>
+        {/* <label>Description</label> */}
         <input
           type='text'
           name='description'
-          placeholder='How it will goin?'
+          className='todo-input'
+          placeholder='Description of your todo?'
           onChange={e => setTodo({ ...todo, desc: e.target.value })}
         />
       </div>
-      <button type='submit' className='form-button'>
+      <br></br>
+      <button type='submit' className='todo-button'>
         Add
       </button>
     </form>

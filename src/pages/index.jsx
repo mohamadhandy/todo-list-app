@@ -10,11 +10,12 @@ const Index = () => {
   const [todo, setTodo] = useState({
     id: '',
     name: '',
-    desc: ''
+    desc: '',
+    isComplete: false
   });
 
   const addTodoHandler = todo => {
-    const newTodo = [{ id: uuidv4(), name: todo.name, desc: todo.desc }];
+    const newTodo = [{ id: uuidv4(), name: todo.name, desc: todo.desc, isComplete: false }];
     setTodos([...todos, ...newTodo]);
     localStorage.setItem(
       LOCAL_STORAGE_KEY,
@@ -29,15 +30,22 @@ const Index = () => {
   };
 
   const updateTodo = (todoObject, newValue) => {
-    console.log("newValue", newValue)
-    console.log("obj", todoObject)
-    // console.log("todoId", todoId)
-    const newTodo = todos.map(item => item.id === newValue ? {...item, name: todo.name, desc: todo.desc} : item)
-    console.log("newTdoos", newTodo)
-    setTodos(todos.map(item => item.id === newValue ? {...item, name: todo.name, desc: todo.desc} : item))
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTodo))
-    console.log("todo", todo)
-    console.log("todos", todos)
+    const newTodos = todos.map(item => item.id === newValue ? {...item, name: todo.name, desc: todo.desc} : item)
+    setTodos(newTodos)
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTodos))
+  }
+
+  const completeTodo = (id) => {
+    console.log("id", id)
+    let updatedTodos = todos.map(todo => {
+      if (todo.id === id) {
+        todo.isComplete = !todo.isComplete
+      }
+      return todo
+    })
+    console.log("updatedTodos", updatedTodos)
+    setTodos(updatedTodos)
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedTodos))
   }
 
   useEffect(() => {
@@ -46,10 +54,10 @@ const Index = () => {
   }, [setTodos]);
 
   return (
-    <div>
+    <div className='todo-app'>
       <h1>Hello, Create Your Activity</h1>
       <TodoAdd addHandler={addTodoHandler} todo={todo} setTodo={setTodo} />
-      <TodoList todos={todos} deleteTodos={deleteTodoHandler} editTodos={updateTodo} />
+      <TodoList todos={todos} deleteTodos={deleteTodoHandler} editTodos={updateTodo} completeTodo={completeTodo} />
     </div>
   );
 };
