@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Index = ({addHandler, todo, setTodo}) => {
-
-
-  // console.log(props);
   const handleSubmit = e => {
     e.preventDefault();
     if (!todo.name || !todo.desc) {

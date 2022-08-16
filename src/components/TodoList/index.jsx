@@ -4,17 +4,6 @@ import TodoCard from '../TodoCard';
 // import './styles.css';
 
 const Index = props => {
-  console.log('props from list', props);
-  console.log("Props test", props)
-
-  // const updateTodo = (todoId) => {
-  //   setTodo(prev => prev.map(item => (item.id === todoId)));
-  // };
-
-  // console.log(updateTodo("b95d7eb2-05e5-4568-a0d4-8d10da6f1bcf", {
-  //   name: "nugraha",
-  //   desc: "description test"
-  // }))
 
   const _deleteTodoHandler = id => {
     props.deleteTodos(id);
@@ -22,6 +11,7 @@ const Index = props => {
 
   const _editTodoHandler = (todoParam, id) => {
     console.log("todolist", todoParam)
+    console.log("id", id)
     props.editTodos(todoParam, id)
   }
 

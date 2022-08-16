@@ -12,7 +12,7 @@ const Index = props => {
         <div className='card-field'>Name : {name} </div>
         <div className='card-field'>Description : {desc} </div>
       </div>
-      <button onClick={() => props.editHandler(id, props)}>Edit</button>
+      <button onClick={() => props.editHandler(props, id)}>Edit</button>
       <button className='card-delete' onClick={() => props.deleteHandler(id)}>
         Delete
       </button>
