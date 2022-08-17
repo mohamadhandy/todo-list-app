@@ -23,7 +23,7 @@ const Index = props => {
           Edit <TiEdit />
         </p>
         <p onClick={() => props.completeTodoHandler(id)}>
-          Complete todo <AiOutlineFileDone className="complete-todo" />
+          {isComplete ? 'Uncheck Todo' : 'Complete Todo'} <AiOutlineFileDone className="complete-todo" />
         </p>
       </div>
       

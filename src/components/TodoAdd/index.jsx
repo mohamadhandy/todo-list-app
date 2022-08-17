@@ -23,6 +23,7 @@ const Index = ({addHandler, todo, setTodo}) => {
         <input
           type='text'
           name='name'
+          value={todo.name}
           className='todo-input'
           placeholder='Name your plan?'
           onChange={e => setTodo({ ...todo, name: e.target.value })}
@@ -35,6 +36,7 @@ const Index = ({addHandler, todo, setTodo}) => {
           type='text'
           name='description'
           className='todo-input'
+          value={todo.desc}
           placeholder='Description of your todo?'
           onChange={e => setTodo({ ...todo, desc: e.target.value })}
         />

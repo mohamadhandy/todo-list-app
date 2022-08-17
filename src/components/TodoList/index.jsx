@@ -22,7 +22,7 @@ const Index = props => {
     <div>
       {props.todos.map(todo => {
         return (
-          <div className='todo-row' key={todo.id}>
+          <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} key={todo.id}>
             <TodoCard
               
               name={todo.name}

@@ -152,9 +152,13 @@ h1 {
 
 .name-item {
   width: 65%;
-
 }
 
 .icon-item {
   width: 30%;
+  cursor: pointer;
+}
+
+.complete {
+  opacity: 0.4;
 }
