@@ -46,6 +46,11 @@ const Index = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedTodos))
   }
 
+  const removeTodos = () => {
+    setTodos([]);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([]));
+  }
+
   useEffect(() => {
     const listTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     listTodos && setTodos(listTodos);
@@ -55,7 +60,8 @@ const Index = () => {
     <div className='todo-app'>
       <h1>Hello, Create Your Activity</h1>
       <TodoAdd addHandler={addTodoHandler} todo={todo} setTodo={setTodo} />
-      <TodoList todos={todos} deleteTodos={deleteTodoHandler} editTodos={updateTodo} completeTodo={completeTodo} />
+      <TodoList todos={todos} deleteTodos={deleteTodoHandler} editTodos={updateTodo} completeTodo={completeTodo}
+      removeTodos={removeTodos} />
     </div>
   );
 };
