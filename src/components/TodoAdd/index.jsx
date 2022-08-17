@@ -19,7 +19,6 @@ const Index = ({addHandler, todo, setTodo}) => {
   return (
     <form className='todo-form' onSubmit={e => handleSubmit(e)}>
       <div className='form-field'>
-        {/* <label>Name</label> */}
         <input
           type='text'
           name='name'
@@ -31,7 +30,6 @@ const Index = ({addHandler, todo, setTodo}) => {
       </div>
       <br></br>
       <div className='form-field'>
-        {/* <label>Description</label> */}
         <input
           type='text'
           name='description'

@@ -1,18 +1,14 @@
 import React, {useState} from 'react';
 import TodoCard from '../TodoCard';
 
-// import './styles.css';
-
 const Index = props => {
 
-  const _deleteTodoHandler = id => {
-    props.deleteTodos(id);
+  const _deleteTodoHandler = (todo, id) => {
+  !todo.isComplete ? props.deleteTodos(id) : '';
   };
 
   const _editTodoHandler = (todoParam, id) => {
-    console.log("todolist", todoParam)
-    console.log("id", id)
-    props.editTodos(todoParam, id)
+    !todoParam.isComplete ? props.editTodos(id) : ''
   }
   const _completeTodoHandler = (id) => {
     props.completeTodo(id)
@@ -28,7 +24,7 @@ const Index = props => {
               name={todo.name}
               desc={todo.desc}
               isComplete={todo.isComplete}
-              deleteHandler={() => _deleteTodoHandler(todo.id)}
+              deleteHandler={() => _deleteTodoHandler(todo, todo.id)}
               editHandler={() => _editTodoHandler(todo, todo.id)}
               completeTodoHandler={() => _completeTodoHandler(todo.id)}
             />

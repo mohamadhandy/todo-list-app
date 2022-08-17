@@ -29,21 +29,19 @@ const Index = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedTodos));
   };
 
-  const updateTodo = (todoObject, newValue) => {
-    const newTodos = todos.map(item => item.id === newValue ? {...item, name: todo.name, desc: todo.desc} : item)
+  const updateTodo = id => {
+    const newTodos = todos.map(item => item.id === id ? {...item, name: todo.name, desc: todo.desc} : item)
     setTodos(newTodos)
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTodos))
   }
 
-  const completeTodo = (id) => {
-    console.log("id", id)
+  const completeTodo = id => {
     let updatedTodos = todos.map(todo => {
       if (todo.id === id) {
         todo.isComplete = !todo.isComplete
       }
       return todo
     })
-    console.log("updatedTodos", updatedTodos)
     setTodos(updatedTodos)
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedTodos))
   }
