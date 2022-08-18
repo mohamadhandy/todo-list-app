@@ -1,20 +1,6 @@
 import React from 'react';
 
-const Index = ({addHandler, todo, setTodo}) => {
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!todo.name || !todo.desc) {
-      alert('Please fill in all fields');
-      return;
-    } else {
-      addHandler(todo);
-    }
-    setTodo({
-      id: '',
-      name: '',
-      desc: ''
-    });
-  };
+const Index = ({handleSubmit, todo, setTodo}) => {
 
   return (
     <form className='todo-form' onSubmit={e => handleSubmit(e)}>
@@ -41,7 +27,7 @@ const Index = ({addHandler, todo, setTodo}) => {
       </div>
       <br></br>
       <button type='submit' className='todo-button'>
-        Add
+        {todo.id ? 'Edit' : 'Add'}
       </button>
     </form>
   );

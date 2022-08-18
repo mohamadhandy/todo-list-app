@@ -30,9 +30,8 @@ const Index = () => {
   };
 
   const updateTodo = id => {
-    const newTodos = todos.map(item => item.id === id ? {...item, name: todo.name, desc: todo.desc} : item)
-    setTodos(newTodos)
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTodos))
+    const newTodo = todos.find(item => item.id === id)
+    setTodo(newTodo)
   }
 
   const completeTodo = id => {
@@ -51,6 +50,25 @@ const Index = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify([]));
   }
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!todo.name || !todo.desc) {
+      alert('Please fill in all fields');
+      return;
+    } else if (!todo.id){
+      addTodoHandler(todo)
+    } else {
+      const dataUpdates = todos.map((t) => t.id === todo.id ? {...t, name: todo.name, desc: todo.desc} : t)
+      setTodos(dataUpdates)
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(dataUpdates))
+    }
+    setTodo({
+      id: '',
+      name: '',
+      desc: ''
+    });
+  };
+
   useEffect(() => {
     const listTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     listTodos && setTodos(listTodos);
@@ -59,7 +77,7 @@ const Index = () => {
   return (
     <div className='todo-app'>
       <h1>Hello, Create Your Activity</h1>
-      <TodoAdd addHandler={addTodoHandler} todo={todo} setTodo={setTodo} />
+      <TodoAdd addHandler={addTodoHandler} todo={todo} setTodo={setTodo} todos={todos} handleSubmit={handleSubmit} />
       <TodoList todos={todos} deleteTodos={deleteTodoHandler} editTodos={updateTodo} completeTodo={completeTodo}
       removeTodos={removeTodos} />
     </div>

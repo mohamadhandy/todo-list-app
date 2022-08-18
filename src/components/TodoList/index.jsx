@@ -7,7 +7,7 @@ const Index = (props) => {
   };
 
   const _editTodoHandler = (todoParam, id) => {
-    !todoParam.isComplete ? props.editTodos(id) : "";
+    props.editTodos(id)
   };
   const _completeTodoHandler = (id) => {
     props.completeTodo(id);
